@@ -7,6 +7,7 @@ import { Process } from "@/components/Process";
 import { FAQ } from "@/components/FAQ";
 import { Contact } from "@/components/Contact";
 import { ChatWidget } from "@/components/ChatWidget";
+import { Footer } from "@/components/Footer";
 
 export default function Home() {
   return (
@@ -20,6 +21,7 @@ export default function Home() {
       <FAQ />
       <Contact />
       <ChatWidget />
+      <Footer />
     </main>
   );
 }

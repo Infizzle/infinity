@@ -6,6 +6,7 @@ import { About } from "@/components/About";
 import { Process } from "@/components/Process";
 import { FAQ } from "@/components/FAQ";
 import { Contact } from "@/components/Contact";
+import { ChatWidget } from "@/components/ChatWidget";
 
 export default function Home() {
   return (
@@ -18,6 +19,7 @@ export default function Home() {
       <Process />
       <FAQ />
       <Contact />
+      <ChatWidget />
     </main>
   );
 }

@@ -10,13 +10,13 @@ export function Footer() {
           </div>
 
           <div className="flex items-center gap-6 font-mono text-xs text-text-muted">
-            <a href="#" className="hover:text-text-body transition-colors">
+            <a href="#" className="hover:text-text-body transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent/50 rounded">
               Privacy Policy
             </a>
-            <a href="#" className="hover:text-text-body transition-colors">
+            <a href="#" className="hover:text-text-body transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent/50 rounded">
               Terms of Service
             </a>
-            <a href="#" className="hover:text-text-body transition-colors" aria-label="LinkedIn">
+            <a href="#" className="hover:text-text-body transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent/50 rounded" aria-label="LinkedIn">
               <Linkedin size={16} />
             </a>
           </div>

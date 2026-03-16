@@ -29,6 +29,7 @@ export function AnimatedCounter({
     const end = value;
     const startTime = performance.now();
     const durationMs = duration * 1000;
+    let frameId: number;
 
     function easeOutCubic(t: number): number {
       return 1 - Math.pow(1 - t, 3);
@@ -43,11 +44,12 @@ export function AnimatedCounter({
       setDisplay(current.toFixed(decimals));
 
       if (progress < 1) {
-        requestAnimationFrame(animate);
+        frameId = requestAnimationFrame(animate);
       }
     }
 
-    requestAnimationFrame(animate);
+    frameId = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(frameId);
   }, [isInView, value, decimals, duration]);
 
   return (

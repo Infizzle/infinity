@@ -82,23 +82,28 @@ export function Contact() {
             className="space-y-5"
           >
             <div>
-              <input type="text" name="name" placeholder="Name *" required
+              <label htmlFor="name" className="sr-only">Name</label>
+              <input id="name" type="text" name="name" placeholder="Name *" required
                 value={form.name} onChange={handleChange} className={inputClasses} />
             </div>
             <div>
-              <input type="text" name="company" placeholder="Company *" required
+              <label htmlFor="company" className="sr-only">Company</label>
+              <input id="company" type="text" name="company" placeholder="Company *" required
                 value={form.company} onChange={handleChange} className={inputClasses} />
             </div>
             <div>
-              <input type="email" name="email" placeholder="Email *" required
+              <label htmlFor="email" className="sr-only">Email</label>
+              <input id="email" type="email" name="email" placeholder="Email *" required
                 value={form.email} onChange={handleChange} className={inputClasses} />
             </div>
             <div>
-              <input type="tel" name="phone" placeholder="Phone (optional)"
+              <label htmlFor="phone" className="sr-only">Phone</label>
+              <input id="phone" type="tel" name="phone" placeholder="Phone (optional)"
                 value={form.phone} onChange={handleChange} className={inputClasses} />
             </div>
             <div>
-              <textarea name="message" placeholder="Tell us about your biggest operational challenge *"
+              <label htmlFor="message" className="sr-only">Message</label>
+              <textarea id="message" name="message" placeholder="Tell us about your biggest operational challenge *"
                 required rows={4} value={form.message} onChange={handleChange}
                 className={`${inputClasses} resize-none`} />
             </div>

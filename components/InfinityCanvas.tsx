@@ -95,12 +95,17 @@ export function InfinityCanvas() {
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
+    let cachedWidth = 0;
+    let cachedHeight = 0;
+
     const resize = () => {
       const dpr = window.devicePixelRatio || 1;
       const rect = canvas.getBoundingClientRect();
+      cachedWidth = rect.width;
+      cachedHeight = rect.height;
       canvas.width = rect.width * dpr;
       canvas.height = rect.height * dpr;
-      ctx.scale(dpr, dpr);
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
       canvas.style.width = `${rect.width}px`;
       canvas.style.height = `${rect.height}px`;
       if (reducedMotion.current) drawStaticSymbol(ctx, rect.width, rect.height);
@@ -113,14 +118,13 @@ export function InfinityCanvas() {
 
     startTimeRef.current = performance.now();
     const assemblyDuration = 3500;
+    let assembled = false;
 
     function animate() {
       if (!ctx || !canvas) return;
       const elapsed = performance.now() - startTimeRef.current;
       const globalProgress = Math.min(elapsed / assemblyDuration, 1);
-      const w = canvas.getBoundingClientRect().width;
-      const h = canvas.getBoundingClientRect().height;
-      ctx.clearRect(0, 0, w, h);
+      ctx.clearRect(0, 0, cachedWidth, cachedHeight);
 
       if (globalProgress >= 1) {
         const pulse = Math.sin(performance.now() * 0.002) * 0.15 + 0.85;
@@ -163,6 +167,14 @@ export function InfinityCanvas() {
       });
 
       ctx.globalAlpha = 1;
+
+      if (globalProgress >= 1 && !assembled) {
+        assembled = true;
+        // Stop rAF loop — use CSS animation for pulse instead
+        canvas.style.animation = "pulse-glow 3s ease-in-out infinite";
+        return;
+      }
+
       animationRef.current = requestAnimationFrame(animate);
     }
 

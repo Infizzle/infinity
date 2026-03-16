@@ -14,11 +14,10 @@ function NetworkGraphic() {
   return (
     <svg viewBox="0 0 280 200" className="w-full max-w-sm mx-auto" aria-hidden="true">
       {edges.map(([a, b], i) => (
-        <motion.line
+        <motion.path
           key={i}
-          x1={nodes[a].cx} y1={nodes[a].cy}
-          x2={nodes[b].cx} y2={nodes[b].cy}
-          stroke="#00D2BE" strokeWidth={1} strokeOpacity={0.3}
+          d={`M ${nodes[a].cx} ${nodes[a].cy} L ${nodes[b].cx} ${nodes[b].cy}`}
+          stroke="#00D2BE" strokeWidth={1} strokeOpacity={0.3} fill="none"
           initial={{ pathLength: 0 }}
           whileInView={{ pathLength: 1 }}
           viewport={{ once: true }}

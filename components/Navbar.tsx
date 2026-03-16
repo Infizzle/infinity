@@ -62,7 +62,7 @@ export function Navbar() {
             <a
               key={link.href}
               href={link.href}
-              className={`text-sm font-mono transition-colors duration-200 ${
+              className={`text-sm font-mono transition-colors duration-200 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent/50 rounded ${
                 activeSection === link.href
                   ? "text-accent"
                   : "text-text-muted hover:text-text-heading"

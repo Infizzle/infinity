@@ -36,3 +36,8 @@
     @apply bg-gradient-to-r from-accent to-cyan-400 bg-clip-text text-transparent;
   }
 }
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.85; }
+  50% { opacity: 1; }
+}
